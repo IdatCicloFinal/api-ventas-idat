@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "286f80fe-6de5-4656-ba96-d32db3b8f135",
+		"name": "APIS IDAT - SW2-20251",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "5403919"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Buscar categoria por ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/v1/category/6"
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Categoria",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryname\": \"Salsas\",\r\n    \"description\": \"Salsas diversas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/api/v1/category"
+					},
+					"response": []
+				},
+				{
+					"name": "Actaualizar Categoria",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryname\": \"Sopas\",\r\n    \"description\": \"Sopas instantaneas de diversos sabores\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/api/v1/category/9"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
