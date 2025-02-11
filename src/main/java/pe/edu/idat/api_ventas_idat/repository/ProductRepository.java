@@ -15,7 +15,7 @@ public interface ProductRepository
     List<Product> findByDiscontinued(Boolean discontinued);
 
     //Sintaxis JPQL
-    @Query("SELECT p FROM Product p WHERE p.discontinued=0")
+    @Query("SELECT p FROM Product p WHERE p.discontinued=false")
     List<Product> obtenerProductosActivos();
 
     @Query(value = "SELECT * FROM products WHERE discontinued=0",
