@@ -6,6 +6,16 @@ public class ProductDto implements DtoEntity {
     private String quantityperunit;
     private Double unitprice;
 
+    public CategoryDto getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDto category) {
+        this.category = category;
+    }
+
+    private CategoryDto category;
+
     public Integer getProductid() {
         return productid;
     }
