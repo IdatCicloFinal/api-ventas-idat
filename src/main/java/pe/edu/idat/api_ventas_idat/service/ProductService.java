@@ -5,6 +5,7 @@ import pe.edu.idat.api_ventas_idat.dto.DtoEntity;
 import pe.edu.idat.api_ventas_idat.dto.ProductDto;
 import pe.edu.idat.api_ventas_idat.model.Product;
 import pe.edu.idat.api_ventas_idat.repository.ProductRepository;
+import pe.edu.idat.api_ventas_idat.repository.projection.ProductStockProjection;
 import pe.edu.idat.api_ventas_idat.util.ConvertDto;
 
 import java.util.ArrayList;
@@ -37,5 +38,9 @@ public class ProductService {
         if (productDtoList.isEmpty())
             return null;
         return productDtoList;
+    }
+
+    public List<ProductStockProjection> obtenerTodosLosProductos(Integer unitsInStock){
+        return productRepository.obtenerTodosLosProductos(unitsInStock);
     }
 }
