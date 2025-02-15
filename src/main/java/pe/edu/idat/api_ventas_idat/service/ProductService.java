@@ -3,6 +3,7 @@ package pe.edu.idat.api_ventas_idat.service;
 import org.springframework.stereotype.Service;
 import pe.edu.idat.api_ventas_idat.dto.DtoEntity;
 import pe.edu.idat.api_ventas_idat.dto.ProductDto;
+import pe.edu.idat.api_ventas_idat.dto.ProductRegisterDto;
 import pe.edu.idat.api_ventas_idat.model.Product;
 import pe.edu.idat.api_ventas_idat.repository.ProductRepository;
 import pe.edu.idat.api_ventas_idat.repository.projection.ProductStockProjection;
@@ -42,5 +43,25 @@ public class ProductService {
 
     public List<ProductStockProjection> obtenerTodosLosProductos(Integer unitsInStock){
         return productRepository.obtenerTodosLosProductos(unitsInStock);
+    }
+
+    public void registrarProducto(ProductRegisterDto productRegisterDto){
+        try{
+            productRepository.registrarProducto(
+                    productRegisterDto.getProductName(), productRegisterDto.getSupplierId(),
+                    productRegisterDto.getCategoryId(), productRegisterDto.getUnitPrice());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void actualizarProducto(ProductRegisterDto productRegisterDto){
+        try{
+            productRepository.actualizarProducto(productRegisterDto.getProductId(),
+                    productRegisterDto.getProductName(), productRegisterDto.getCategoryId(),
+                    productRegisterDto.getCategoryId());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

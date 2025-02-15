@@ -2,12 +2,11 @@ package pe.edu.idat.api_ventas_idat.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pe.edu.idat.api_ventas_idat.dto.DtoEntity;
 import pe.edu.idat.api_ventas_idat.dto.GenericResponseDto;
+import pe.edu.idat.api_ventas_idat.dto.ProductDto;
+import pe.edu.idat.api_ventas_idat.dto.ProductRegisterDto;
 import pe.edu.idat.api_ventas_idat.model.Product;
 import pe.edu.idat.api_ventas_idat.repository.ProductRepository;
 import pe.edu.idat.api_ventas_idat.repository.projection.ProductStockProjection;
@@ -56,4 +55,37 @@ public class ProductController {
         return new ResponseEntity<>(response,
                 HttpStatus.OK);
     }
+
+    @PostMapping
+    public ResponseEntity<GenericResponseDto<String>>
+        registrarProducto(@RequestBody ProductRegisterDto productRegisterDto){
+        GenericResponseDto<String> response = new GenericResponseDto<>();
+        try{
+            productService.registrarProducto(productRegisterDto);
+            response.setCorrecto(true);
+            response.setMensaje("Producto registrado exitosamente");
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (Exception e) {
+            response.setCorrecto(false);
+            response.setMensajeError(e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PatchMapping
+    public ResponseEntity<GenericResponseDto<String>>
+    actualizarProducto(@RequestBody ProductRegisterDto productRegisterDto){
+        GenericResponseDto<String> response = new GenericResponseDto<>();
+        try{
+            productService.actualizarProducto(productRegisterDto);
+            response.setCorrecto(true);
+            response.setMensaje("Producto actualizado exitosamente");
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (Exception e) {
+            response.setCorrecto(false);
+            response.setMensajeError(e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
