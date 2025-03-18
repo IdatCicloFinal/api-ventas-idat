@@ -9,6 +9,7 @@ import pe.edu.idat.api_ventas_idat.service.CategoryService;
 
 import java.util.List;
 
+//@CrossOrigin(origins = {"*"}, methods = {RequestMethod.GET, RequestMethod.POST})
 @RestController
 @RequestMapping("/api/v1/category")
 public class CategoryController {
@@ -19,6 +20,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+    //@CrossOrigin(origins = {"*"})
     @GetMapping
     public ResponseEntity<List<Category>> listarCategorias(){
         List<Category> categoryList
